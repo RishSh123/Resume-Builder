@@ -50,7 +50,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
             <div
               key={template.id}
               onClick={() => {
-                onchange(template.id);
+                onChange(template.id);
                 setIsOpen(false);
               }}
               className={`relative p-3 border rounded-md cursor-pointer transition-all ${
@@ -74,7 +74,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
                   {template.preview}
                 </div>
               </div>
-              
+
             </div>
           ))}
         </div>
