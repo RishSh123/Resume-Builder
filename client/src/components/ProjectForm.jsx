@@ -1,32 +1,30 @@
-import { GraduationCap, Plus, Trash2 } from "lucide-react";
-import React from "react";
+import React from 'react'
 
-const EducationForm = ({ data, onChange }) => {
-  const addEducation = () => {
-    const newEducation = {
-      institution: "",
-      degree: "",
-      field: "",
-      graduation_date: "",
-      gpa: "",
+const ProjectForm = ({ data, onChange }) => {
+    const addProject = () => {
+    const newProject = {
+      name: "",
+      type: "",
+      description: "",
     };
 
-    onChange([...data, newEducation]);
+    onChange([...data, newProject]);
   };
 
-  const removeEducation = (index) => {
+  const removeProject = (index) => {
     const updatedEducation = data.filter((_, i) => i !== index);
     onChange(updatedEducation);
   };
 
-  const updateEducation = (index, field, value) => {
+  const updateProject = (index, field, value) => {
     const updated = [...data];
     updated[index] = { ...updated[index], [field]: value };
     onChange(updated);
   };
 
   return (
-    <div className="space-y-6">
+    <div>
+      <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
@@ -134,7 +132,8 @@ const EducationForm = ({ data, onChange }) => {
         </div>
       )}
     </div>
-  );
-};
+    </div>
+  )
+}
 
-export default EducationForm;
+export default ProjectForm
