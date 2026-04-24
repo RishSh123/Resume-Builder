@@ -118,7 +118,7 @@ export const updateResume = async (req, res) => {
         // Important:
         // Frontend often sends data as string (especially with file upload)
         // So you convert it into a proper JS object
-        let resumeDataCopy= JSON.parse(resumeData) // copy jo database mein store karni hai 
+        let resumeDataCopy= JSON.parse(JSON.stringify(resumeData)) // copy jo database mein store karni hai 
 
         const resume = await Resume.findByIdAndUpdate({userId,_id:resumeId},resumeDataCopy,{new:true});
 

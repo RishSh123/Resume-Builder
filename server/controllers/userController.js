@@ -37,6 +37,8 @@ export const registerUser = async (req, res) => {
             password: hashedPassword,
         })
 
+        const savedUser = await newUser.save();
+
         //send token in response (generate in seperate function)
 
         const token = generateToKen(newUser._id); // ._id property is auto generated my mongodb database
