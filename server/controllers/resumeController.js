@@ -92,6 +92,14 @@ export const updateResume = async (req, res) => {
     try {
         const userId = req.userId;
         const {resumeId,resumeData , removeBackground} = req.body;
+
+        let resumeDataCopy;
+        if(typeof resumeData === 'string'){
+            resumeDataCopy =  JSON.parse(resumeData)
+        }
+        else{
+            resumeDataCopy= structuredClone(resumeData)
+        }
         // image will be handled by middleware using multer
         const image =req.file;
         //image needs to uploaded on any online storage (imagekit)
@@ -118,7 +126,7 @@ export const updateResume = async (req, res) => {
         // Important:
         // Frontend often sends data as string (especially with file upload)
         // So you convert it into a proper JS object
-        let resumeDataCopy= JSON.parse(JSON.stringify(resumeData)) // copy jo database mein store karni hai 
+        // let resumeDataCopy= JSON.parse(JSON.stringify(resumeData)) // copy jo database mein store karni hai 
 
         const resume = await Resume.findByIdAndUpdate({userId,_id:resumeId},resumeDataCopy,{new:true});
 
