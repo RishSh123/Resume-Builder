@@ -90,7 +90,7 @@ const ResumeBuilder = () => {
       formData.append("resumeId",resumeId)
       formData.append("resumeData",JSON.stringify({public : !resumeData.public}))
 
-      const {data} = await api.put('/api/resume/update' , formData , {headers : {Authorization : token }})
+      const {data} = await api.put('/api/resumes/update' , formData , {headers : {Authorization : token }})
 
       setResumeData({...resumeData,public:!resumeData.public})
       toast.success(data.message)
@@ -251,6 +251,7 @@ const ResumeBuilder = () => {
                         professional_summary: data,
                       }))
                     }
+                    setResumeData={setResumeData}  
                   />
                 )}
 
